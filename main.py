@@ -21,6 +21,7 @@ try:
         debug_mode = 0
         try:
             # Initial assignments
+            valid_inputs = "qwertyuiopasdfghjklzxcvbnm"
             win = False
             attempts = 10
             score = 0
@@ -36,14 +37,25 @@ try:
                 print(f"You have {attempts} guesses left!")
                 print(hidden_word)
                 inputted = input()
-                if inputted in guessed_letters or inputted == ' ' or inputted == '':
-                    print("Don't cheat. Restarting...")
+
+                # Input sanitization
+                try:
+                    int(inputted)
+                    int_check = 1
+                except ValueError:
+                    int_check = 0
+
+                inputted = inputted.lower()
+                if inputted in guessed_letters:
+                    print("You have already guessed that letter.")
                     time.sleep(1)
-                    raise Exception()
+                    continue
+                if inputted not in valid_inputs or len(inputted) != 1:
+                    print("Please type a valid input.")
+                    time.sleep(1)
+                    continue
 
                 guessed_letters.append(inputted)
-
-
 
                 # Checks if the inputted letter is inside the word
                 if inputted in word:
