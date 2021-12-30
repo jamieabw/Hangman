@@ -39,12 +39,6 @@ try:
                 inputted = input()
 
                 # Input sanitization
-                try:
-                    int(inputted)
-                    int_check = 1
-                except ValueError:
-                    int_check = 0
-
                 inputted = inputted.lower()
                 if inputted in guessed_letters:
                     print("You have already guessed that letter.")
@@ -86,9 +80,12 @@ try:
 
         except Exception as x:
             clear_console()
-            main()
             if debug_mode == 1:
                 print(x)
+                quit()
+            else:
+                main()
+
 
     if __name__ == "__main__":
         main()
