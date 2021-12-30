@@ -23,14 +23,17 @@ def main():
         score = 0
         word = word_list[random.randint(0, len(word_list))]
         hidden_word = '_ ' * len(word)
+        guessed_letters = []
 
         # Actual game
         while attempts > 0:
             clear_console()
             print(art[10 - attempts])
+            print(f"You have guessed: {guessed_letters}")
             print(f"You have {attempts} guesses left!")
             print(hidden_word)
             inputted = input()
+            guessed_letters.append(inputted)
 
             # Checks if the inputted letter is inside the word
             if inputted in word:
