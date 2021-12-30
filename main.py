@@ -61,8 +61,8 @@ try:
                     # indexes where the letter appears - not just the first one
                     for index_num in indexes:
                         list_hidden[((index_num + 1) * 2) - 2] = inputted
+                        score += 1
                     hidden_word = ''.join(list_hidden)
-                    score += 1
                     # Win check - probably a more efficient way to do this but this works well enough
                     if score == len(word):
                         print(f"You won in {10 - attempts} guesses!\nThe word was: {word}")
